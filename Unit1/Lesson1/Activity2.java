@@ -8,6 +8,6 @@
 
 class Lesson_1_Activity_Two {
     public static void main(String[] args) {
-        System.out.print(" Tom \n Tom \n Tom ");
+        System.out.println(" Tom \n Tom \n Tom ");
     }
 }
