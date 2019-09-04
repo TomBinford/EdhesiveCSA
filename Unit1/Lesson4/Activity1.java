@@ -15,7 +15,6 @@
 */
 
 import java.util.Scanner;
-import java.lang.Math;
 
 class Lesson_4_Activity_One {
     public static void main(String[] args) {
