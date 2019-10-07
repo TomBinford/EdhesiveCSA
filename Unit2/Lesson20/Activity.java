@@ -78,12 +78,10 @@ class Lesson_20_Activity {
     public static void main(String[] args)
     {
         Scanner scan = new Scanner(System.in);
-        double farN = 0;
-        double farS = 0;
-        double farE = 0;
-        double farW = 0;
-        boolean longSet = false;
-        boolean latSet = false;
+        double farN = -90;
+        double farS = 90;
+        double farE = -180;
+        double farW = 180;
         while(true)
         {
             System.out.println("Please enter the latitude:");
@@ -94,19 +92,10 @@ class Lesson_20_Activity {
             
             if(Math.abs(latitude) <= 90)
             {
-                if(!latSet)
-                {
-                    latSet = true;
+                if(latitude > farN)
                     farN = latitude;
+                if(latitude < farS)
                     farS = latitude;
-                }
-                else
-                {
-                    if(latitude > farN)
-                        farN = latitude;
-                    if(latitude < farS)
-                        farS = latitude;
-                }
             }
             else
             {
@@ -115,19 +104,10 @@ class Lesson_20_Activity {
             
             if(Math.abs(longitude) <= 180)
             {
-                if(!longSet)
-                {
-                    longSet = true;
+                if(longitude > farE)
                     farE = longitude;
+                if(longitude < farW)
                     farW = longitude;
-                }
-                else
-                {
-                    if(longitude > farE)
-                        farE = longitude;
-                    if(longitude < farW)
-                        farW = longitude;
-                }
             }
             else
             {
