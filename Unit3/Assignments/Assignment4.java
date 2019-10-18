@@ -2,9 +2,6 @@ import java.util.Scanner;
 
 class Main
 {
-    static int vowelsRemoved = 0;
-    static int duplicatesRemoved = 0;
-
     public static void main(String[] args)
     {
         Scanner scan = new Scanner(System.in);
@@ -24,8 +21,8 @@ class Main
         String noVowels = removeVowels(noDuplicates);
         
         System.out.println("Shortened message: " + noVowels);
-        System.out.println("Repeated letters removed: " + duplicatesRemoved);
-        System.out.println("Vowels removed: " + vowelsRemoved);
+        System.out.println("Repeated letters removed: " + (countNonVowelDuplicates(message) - countNonVowelDuplicates(noVowels)));
+        System.out.println("Vowels removed: " + (countVowels(message) - countVowels(noVowels)));
         System.out.println("Total characters saved: " + (message.length() - noVowels.length()));
     }
     
@@ -34,21 +31,39 @@ class Main
         return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
     }
     
+    static int countVowels(String message)
+    {
+        int vowels = 0;
+        for(int i = 0; i < message.length(); i++)
+        {
+            if(isVowel(message.charAt(i)))
+            {
+                vowels++;
+            }
+        }
+        return vowels;
+    }
+    
+    static int countNonVowelDuplicates(String message)
+    {
+        int duplicates = 0;
+        for(int i = 1; i < message.length(); i++)
+        {
+            if(!isVowel(message.charAt(i)) && message.charAt(i) == message.charAt(i - 1))
+            {
+                duplicates++;
+            }
+        }
+        return duplicates;
+    }
+    
     static String removeVowels(String message)
     {
         String noVowels = "";
         for(int i = 0; i < message.length(); i++)
         {
             char atI = message.charAt(i);
-            if(i == 0 || message.charAt(i - 1) == ' ')
-            {
-                noVowels += atI;
-            }
-            else if(isVowel(atI))
-            {
-                vowelsRemoved++;
-            }
-            else
+            if(i == 0 || message.charAt(i - 1) == ' ' || !isVowel(atI))
             {
                 noVowels += atI;
             }
@@ -62,11 +77,7 @@ class Main
         for(int i = 0; i < message.length(); i++)
         {
             char atI = message.charAt(i);
-            if(i != 0 && message.charAt(i - 1) == atI && !isVowel(atI))
-            {
-                duplicatesRemoved++;
-            }
-            else
+            if(i == 0 || message.charAt(i - 1) != atI || isVowel(atI))
             {
                 noDuplicates += atI;
             }
