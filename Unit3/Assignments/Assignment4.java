@@ -18,7 +18,7 @@ class Main
         message = message.toLowerCase();
         
         String noDuplicates = removeDuplicates(message);
-        String noVowels = removeVowels(noDuplicates);
+        String noVowels = noDuplicates.replaceAll("\\B([aeiou])", "");
         
         System.out.println("Shortened message: " + noVowels);
         System.out.println("Repeated letters removed: " + (countNonVowelDuplicates(message) - countNonVowelDuplicates(noVowels)));
@@ -55,20 +55,6 @@ class Main
             }
         }
         return duplicates;
-    }
-    
-    static String removeVowels(String message)
-    {
-        String noVowels = "";
-        for(int i = 0; i < message.length(); i++)
-        {
-            char atI = message.charAt(i);
-            if(i == 0 || message.charAt(i - 1) == ' ' || !isVowel(atI))
-            {
-                noVowels += atI;
-            }
-        }
-        return noVowels;
     }
     
     static String removeDuplicates(String message)
