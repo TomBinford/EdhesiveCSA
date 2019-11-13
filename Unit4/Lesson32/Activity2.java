@@ -18,12 +18,12 @@
 
 class Lesson_32_Activity_Two
 {
-        public static void monthDays(int month)
-        {
-            System.out.println(new int[]{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}[month - 1]);
-        }
+    public static void monthDays(int month)
+    {
+        System.out.println(new int[]{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}[month - 1]);
+    }
         
-        public static void main(String[] args)
-        {
-        }
+    public static void main(String[] args)
+    {
+    }
 }
