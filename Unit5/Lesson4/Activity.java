@@ -1,5 +1,3 @@
-import java.util.Math;
-
 class Vehicle
 {
     private int location;
